@@ -16,7 +16,6 @@ class UsuariosRepository {
       id: 'usuario-${_service.usuarios.length + 1}',
       nombre: nombre,
       correo: correo,
-      contrasena: contrasena,
     );
     final usuarioGuardado = _service.registrarUsuario(usuarioDto);
 
@@ -24,7 +23,6 @@ class UsuariosRepository {
       id: usuarioGuardado.id,
       nombre: usuarioGuardado.nombre,
       correo: usuarioGuardado.correo,
-      contrasena: usuarioGuardado.contrasena,
     );
   }
 }

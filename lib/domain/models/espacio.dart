@@ -1,3 +1,5 @@
+import 'servicio_extra.dart';
+
 class Espacio {
   const Espacio({
     required this.id,
@@ -27,7 +29,7 @@ class Espacio {
   final int aforo;
   final String imagenAsset;
   final List<String> imagenesAssets;
-  final List<String> serviciosDisponibles;
+  final List<ServicioExtra> serviciosDisponibles;
   final List<String> actividades;
   final List<String> equipamiento;
   final List<String> disponibilidad;

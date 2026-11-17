@@ -1,4 +1,5 @@
 import '../../domain/models/espacio.dart';
+import '../../domain/models/servicio_extra.dart';
 import '../services/espacios_local_service.dart';
 
 class EspaciosRepository {
@@ -16,8 +17,16 @@ class EspaciosRepository {
                 aforo: espacio.aforo,
                 imagenAsset: espacio.imagenAsset,
                 imagenesAssets: List.unmodifiable(espacio.imagenesAssets),
-                serviciosDisponibles:
-                    List.unmodifiable(espacio.serviciosDisponibles),
+                serviciosDisponibles: espacio.serviciosDisponibles
+                    .map(
+                      (servicio) => ServicioExtra(
+                        id: servicio.id,
+                        nombre: servicio.nombre,
+                        descripcion: servicio.descripcion,
+                        precioCentimos: servicio.precioCentimos,
+                      ),
+                    )
+                    .toList(growable: false),
                 actividades: List.unmodifiable(espacio.actividades),
                 equipamiento: List.unmodifiable(espacio.equipamiento),
                 disponibilidad: List.unmodifiable(espacio.disponibilidad),

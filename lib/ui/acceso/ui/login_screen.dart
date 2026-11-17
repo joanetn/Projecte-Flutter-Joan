@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/ui/button.dart';
-import '../../espacios/ui/espacios_screen.dart';
+import '../../core/ui/main_shell_screen.dart';
 import 'registro_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -18,7 +18,16 @@ class _LoginScreenState extends State<LoginScreen> {
   void _entrar() {
     if (_formKey.currentState!.validate()) {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => EspaciosScreen()),
+        MaterialPageRoute(
+          builder: (_) => MainShellScreen(
+            onCerrarSesion: () {
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (_) => const LoginScreen()),
+                (route) => false,
+              );
+            },
+          ),
+        ),
       );
     }
   }

@@ -1,4 +1,5 @@
 import '../models/espacio_dto.dart';
+import '../models/servicio_extra_dto.dart';
 
 class EspaciosLocalService {
   EspaciosLocalService({List<EspacioDto>? espacios})
@@ -23,7 +24,26 @@ class EspaciosLocalService {
         'assets/images/sala_mirador_2.jpg',
         'assets/images/sala_mirador_3.jpg',
       ],
-      serviciosDisponibles: ['Limpieza final', 'Proyector', 'Catering'],
+      serviciosDisponibles: [
+        ServicioExtraDto(
+          id: 'limpieza',
+          nombre: 'Limpieza final',
+          descripcion: 'Deja el espacio preparado al terminar.',
+          precioCentimos: 1500,
+        ),
+        ServicioExtraDto(
+          id: 'proyector',
+          nombre: 'Proyector',
+          descripcion: 'Proyector y pantalla.',
+          precioCentimos: 1200,
+        ),
+        ServicioExtraDto(
+          id: 'catering',
+          nombre: 'Catering',
+          descripcion: 'Servicio de comida y bebida.',
+          precioCentimos: 3500,
+        ),
+      ],
       actividades: ['Reuniones', 'Talleres', 'Presentaciones'],
       equipamiento: ['Wifi', 'Pizarra', 'Mesas y sillas'],
       disponibilidad: ['Hoy: 10:00 - 18:00', 'Mañana: 08:00 - 21:00'],
@@ -44,7 +64,20 @@ class EspaciosLocalService {
         'assets/images/patio_naranja.jpg',
         'assets/images/patio_naranja_2.jpg',
       ],
-      serviciosDisponibles: ['Limpieza final', 'Iluminación'],
+      serviciosDisponibles: [
+        ServicioExtraDto(
+          id: 'limpieza',
+          nombre: 'Limpieza final',
+          descripcion: 'Deja el espacio preparado al terminar.',
+          precioCentimos: 1500,
+        ),
+        ServicioExtraDto(
+          id: 'iluminacion',
+          nombre: 'Iluminación',
+          descripcion: 'Iluminación decorativa.',
+          precioCentimos: 1800,
+        ),
+      ],
       actividades: ['Celebraciones', 'Comidas', 'Reuniones'],
       equipamiento: ['Mesas', 'Sillas', 'Iluminación exterior'],
       disponibilidad: ['Hoy: 12:00 - 20:00', 'Mañana: 09:00 - 22:00'],
@@ -65,7 +98,20 @@ class EspaciosLocalService {
         'assets/images/aula_norte.jpg',
         'assets/images/aula_norte_2.jpg',
       ],
-      serviciosDisponibles: ['Proyector', 'Pizarra digital'],
+      serviciosDisponibles: [
+        ServicioExtraDto(
+          id: 'proyector',
+          nombre: 'Proyector',
+          descripcion: 'Proyector y pantalla.',
+          precioCentimos: 1200,
+        ),
+        ServicioExtraDto(
+          id: 'pizarra',
+          nombre: 'Pizarra digital',
+          descripcion: 'Pizarra digital para presentaciones.',
+          precioCentimos: 1000,
+        ),
+      ],
       actividades: ['Cursos', 'Clases', 'Presentaciones'],
       equipamiento: ['Wifi', 'Proyector', 'Pizarra digital'],
       disponibilidad: ['Hoy: 09:00 - 16:00'],
@@ -86,7 +132,20 @@ class EspaciosLocalService {
         'assets/images/estudio_luz.jpg',
         'assets/images/estudio_luz_2.jpg',
       ],
-      serviciosDisponibles: ['Equipo de sonido', 'Limpieza final'],
+      serviciosDisponibles: [
+        ServicioExtraDto(
+          id: 'sonido',
+          nombre: 'Equipo de sonido',
+          descripcion: 'Altavoces y micrófono.',
+          precioCentimos: 2000,
+        ),
+        ServicioExtraDto(
+          id: 'limpieza',
+          nombre: 'Limpieza final',
+          descripcion: 'Deja el espacio preparado al terminar.',
+          precioCentimos: 1500,
+        ),
+      ],
       actividades: ['Sesiones creativas', 'Reuniones', 'Fotografía'],
       equipamiento: ['Wifi', 'Iluminación', 'Mesa de trabajo'],
       disponibilidad: ['Mañana: 10:00 - 19:00'],
@@ -107,7 +166,26 @@ class EspaciosLocalService {
         'assets/images/terraza_olivo.jpg',
         'assets/images/terraza_olivo_2.jpg',
       ],
-      serviciosDisponibles: ['Catering', 'Iluminación', 'Limpieza final'],
+      serviciosDisponibles: [
+        ServicioExtraDto(
+          id: 'catering',
+          nombre: 'Catering',
+          descripcion: 'Servicio de comida y bebida.',
+          precioCentimos: 3500,
+        ),
+        ServicioExtraDto(
+          id: 'iluminacion',
+          nombre: 'Iluminación',
+          descripcion: 'Iluminación decorativa.',
+          precioCentimos: 1800,
+        ),
+        ServicioExtraDto(
+          id: 'limpieza',
+          nombre: 'Limpieza final',
+          descripcion: 'Deja el espacio preparado al terminar.',
+          precioCentimos: 1500,
+        ),
+      ],
       actividades: ['Eventos', 'Celebraciones', 'Comidas'],
       equipamiento: ['Mesas', 'Sillas', 'Zona exterior'],
       disponibilidad: ['Hoy: 16:00 - 23:00'],
@@ -128,7 +206,26 @@ class EspaciosLocalService {
         'assets/images/salon_central.jpg',
         'assets/images/salon_central_2.jpg',
       ],
-      serviciosDisponibles: ['Catering', 'Proyector', 'Limpieza final'],
+      serviciosDisponibles: [
+        ServicioExtraDto(
+          id: 'catering',
+          nombre: 'Catering',
+          descripcion: 'Servicio de comida y bebida.',
+          precioCentimos: 3500,
+        ),
+        ServicioExtraDto(
+          id: 'proyector',
+          nombre: 'Proyector',
+          descripcion: 'Proyector y pantalla.',
+          precioCentimos: 1200,
+        ),
+        ServicioExtraDto(
+          id: 'limpieza',
+          nombre: 'Limpieza final',
+          descripcion: 'Deja el espacio preparado al terminar.',
+          precioCentimos: 1500,
+        ),
+      ],
       actividades: ['Eventos', 'Reuniones', 'Presentaciones'],
       equipamiento: ['Wifi', 'Proyector', 'Mesas y sillas'],
       disponibilidad: ['Hoy: 08:00 - 23:00'],

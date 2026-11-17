@@ -1,3 +1,5 @@
+import 'servicio_extra_dto.dart';
+
 class EspacioDto {
   const EspacioDto({
     required this.id,
@@ -27,7 +29,7 @@ class EspacioDto {
   final int aforo;
   final String imagenAsset;
   final List<String> imagenesAssets;
-  final List<String> serviciosDisponibles;
+  final List<ServicioExtraDto> serviciosDisponibles;
   final List<String> actividades;
   final List<String> equipamiento;
   final List<String> disponibilidad;

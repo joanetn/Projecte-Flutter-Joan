@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../domain/models/espacio.dart';
 import '../../core/ui/button.dart';
+import '../../reservas/ui/nueva_reserva_screen.dart';
 
 class EspacioDetalleScreen extends StatelessWidget {
   const EspacioDetalleScreen({
@@ -74,7 +75,11 @@ class EspacioDetalleScreen extends StatelessWidget {
                       Icons.add_circle_outline,
                       color: Color.fromRGBO(190, 150, 82, 1),
                     ),
-                    title: Text(servicio),
+                    title: Text(servicio.nombre),
+                    subtitle: Text(
+                      '${servicio.descripcion} · '
+                      '${(servicio.precioCentimos / 100).toStringAsFixed(2)} EUR',
+                    ),
                   ),
                 )
                 .toList(),
@@ -117,11 +122,9 @@ class EspacioDetalleScreen extends StatelessWidget {
             icono: Icons.calendar_month_outlined,
             ancho: double.infinity,
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(
-                    'La nueva reserva se añadirá en el siguiente paso.',
-                  ),
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => NuevaReservaScreen(espacio: espacio),
                 ),
               );
             },
