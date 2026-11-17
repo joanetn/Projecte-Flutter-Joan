@@ -50,7 +50,7 @@ class Boton extends StatelessWidget {
             : colorPrincipal);
     final style = ButtonStyle(
       backgroundColor: WidgetStatePropertyAll(
-        tipo == TipoBoton.texto ? Colors.transparent : colorPrincipal,
+        tipo == TipoBoton.principal ? colorPrincipal : Colors.transparent,
       ),
       foregroundColor: WidgetStatePropertyAll(colorTextoFinal),
       padding: WidgetStatePropertyAll(padding),
