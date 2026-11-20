@@ -53,6 +53,7 @@ class Boton extends StatelessWidget {
         tipo == TipoBoton.principal ? colorPrincipal : Colors.transparent,
       ),
       foregroundColor: WidgetStatePropertyAll(colorTextoFinal),
+      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
       padding: WidgetStatePropertyAll(padding),
       minimumSize: WidgetStatePropertyAll(
         Size(ancho ?? 0, alto ?? 0),

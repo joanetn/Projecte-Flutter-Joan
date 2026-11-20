@@ -5,9 +5,19 @@ import '../../perfil/ui/perfil_screen.dart';
 import '../../reservas/ui/mis_reservas_screen.dart';
 
 class MainShellScreen extends StatefulWidget {
-  const MainShellScreen({super.key, required this.onCerrarSesion});
+  const MainShellScreen({
+    super.key,
+    required this.onCerrarSesion,
+    required this.modoOscuro,
+    required this.escalaTexto,
+    required this.onPreferenciasActualizadas,
+  });
 
   final VoidCallback onCerrarSesion;
+  final bool modoOscuro;
+  final double escalaTexto;
+  final void Function(bool modoOscuro, double escalaTexto)
+      onPreferenciasActualizadas;
 
   @override
   State<MainShellScreen> createState() => _MainShellScreenState();
@@ -21,7 +31,12 @@ class _MainShellScreenState extends State<MainShellScreen> {
     final pantallas = [
       EspaciosScreen(key: ValueKey(_indice)),
       MisReservasScreen(key: ValueKey(_indice)),
-      PerfilScreen(onCerrarSesion: widget.onCerrarSesion),
+      PerfilScreen(
+        onCerrarSesion: widget.onCerrarSesion,
+        modoOscuro: widget.modoOscuro,
+        escalaTexto: widget.escalaTexto,
+        onPreferenciasActualizadas: widget.onPreferenciasActualizadas,
+      ),
     ];
     return Scaffold(
       body: pantallas[_indice],

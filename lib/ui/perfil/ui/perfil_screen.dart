@@ -3,9 +3,19 @@ import 'package:flutter/material.dart';
 import '../../core/ui/button.dart';
 
 class PerfilScreen extends StatelessWidget {
-  const PerfilScreen({super.key, required this.onCerrarSesion});
+  const PerfilScreen({
+    super.key,
+    required this.onCerrarSesion,
+    required this.modoOscuro,
+    required this.escalaTexto,
+    required this.onPreferenciasActualizadas,
+  });
 
   final VoidCallback onCerrarSesion;
+  final bool modoOscuro;
+  final double escalaTexto;
+  final void Function(bool modoOscuro, double escalaTexto)
+      onPreferenciasActualizadas;
 
   @override
   Widget build(BuildContext context) {
@@ -40,21 +50,45 @@ class PerfilScreen extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           Card(
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.surface,
             child: Column(
-              children: const [
-                ListTile(
-                  leading: Icon(Icons.notifications_none),
+              children: [
+                SwitchListTile(
+                  secondary: const Icon(Icons.notifications_none),
                   title: Text('Notificaciones'),
-                  trailing: Icon(Icons.chevron_right),
+                  value: true,
+                  onChanged: (_) {},
+                ),
+                SwitchListTile(
+                  secondary: const Icon(Icons.dark_mode_outlined),
+                  title: const Text('Modo oscuro'),
+                  subtitle: const Text('Cambia el contraste de la aplicación'),
+                  value: modoOscuro,
+                  onChanged: (valor) {
+                    onPreferenciasActualizadas(valor, escalaTexto);
+                  },
                 ),
                 ListTile(
+                  leading: const Icon(Icons.text_fields),
+                  title: const Text('Tamaño de letra'),
+                  subtitle: Text(_textoEscala(escalaTexto)),
+                ),
+                Slider(
+                  value: escalaTexto,
+                  min: 0.9,
+                  max: 1.3,
+                  divisions: 4,
+                  label: _textoEscala(escalaTexto),
+                  onChanged: (valor) {
+                    onPreferenciasActualizadas(modoOscuro, valor);
+                  },
+                ),
+                const ListTile(
                   leading: Icon(Icons.language),
                   title: Text('Idioma'),
                   subtitle: Text('Español'),
-                  trailing: Icon(Icons.chevron_right),
                 ),
-                ListTile(
+                const ListTile(
                   leading: Icon(Icons.info_outline),
                   title: Text('Sobre la aplicación'),
                   subtitle: Text('Demo de espacios y reservas simuladas'),
@@ -75,5 +109,15 @@ class PerfilScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _textoEscala(double escala) {
+    if (escala < 1) {
+      return 'Pequeña';
+    }
+    if (escala > 1) {
+      return 'Grande';
+    }
+    return 'Normal';
   }
 }

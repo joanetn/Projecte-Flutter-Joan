@@ -5,7 +5,17 @@ import '../../core/ui/main_shell_screen.dart';
 import 'registro_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({
+    super.key,
+    this.modoOscuro = false,
+    this.escalaTexto = 1,
+    this.onPreferenciasActualizadas,
+  });
+
+  final bool modoOscuro;
+  final double escalaTexto;
+  final void Function(bool modoOscuro, double escalaTexto)?
+      onPreferenciasActualizadas;
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -20,6 +30,10 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (_) => MainShellScreen(
+            modoOscuro: widget.modoOscuro,
+            escalaTexto: widget.escalaTexto,
+            onPreferenciasActualizadas:
+                widget.onPreferenciasActualizadas ?? (_, _) {},
             onCerrarSesion: () {
               Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(builder: (_) => const LoginScreen()),

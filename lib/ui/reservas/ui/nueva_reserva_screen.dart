@@ -47,6 +47,36 @@ class _NuevaReservaScreenState extends State<NuevaReservaScreen> {
     }
   }
 
+  Future<void> _seleccionarHora() async {
+    final hora = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay(hour: _horaInicio, minute: 0),
+    );
+    if (hora != null) {
+      setState(() => _horaInicio = hora.hour);
+    }
+  }
+
+  Future<void> _seleccionarDuracion() async {
+    final duracion = await showDialog<int>(
+      context: context,
+      builder: (context) => SimpleDialog(
+        title: const Text('Selecciona la duración'),
+        children: [1, 2, 3]
+            .map(
+              (valor) => SimpleDialogOption(
+                onPressed: () => Navigator.of(context).pop(valor),
+                child: Text('$valor hora${valor == 1 ? '' : 's'}'),
+              ),
+            )
+            .toList(),
+      ),
+    );
+    if (duracion != null) {
+      setState(() => _duracion = duracion);
+    }
+  }
+
   void _confirmar() {
     if (!_formKey.currentState!.validate()) {
       return;
@@ -138,16 +168,12 @@ class _NuevaReservaScreenState extends State<NuevaReservaScreen> {
             _Selector(
               titulo: 'Hora de inicio',
               valor: '$_horaInicio:00',
-              onPressed: () {
-                setState(() => _horaInicio = _horaInicio == 10 ? 16 : 10);
-              },
+              onPressed: _seleccionarHora,
             ),
             _Selector(
               titulo: 'Duración',
               valor: '$_duracion hora${_duracion == 1 ? '' : 's'}',
-              onPressed: () {
-                setState(() => _duracion = _duracion == 3 ? 1 : _duracion + 1);
-              },
+              onPressed: _seleccionarDuracion,
             ),
             const SizedBox(height: 12),
             const Text(
